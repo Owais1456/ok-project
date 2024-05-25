@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: burlywood;
+    background-image: url(https://t3.ftcdn.net/jpg/05/13/59/72/360_F_513597277_YYqrogAmgRR9ohwTUnOM784zS9eYUcSk.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-position-x: -10px;
+    background-position-y: -10px;
+
+    
+   
+   
+    
+}
+.container {
+    max-width: 525px;
+    margin: 50px auto ;
+    padding: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    color:black;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color:white;
+    max-width: 300px;
+    
+}
+
+input:hover{
+    background-color:aqua;
+border: 1px solid black;
+border-radius: 10px;
+
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+.todo-item {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color:white;
+    max-width: 300px;
+    margin-left: -30px;
+}
+
+.todo-item:hover{
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+.todo-item button {
+    margin-left: 10px;
+    padding: 3px 8px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.todo-item button:hover {
+    background-color: #c82333;
+}
