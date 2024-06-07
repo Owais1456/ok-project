@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mobile Filter App</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Mobile Brand and Model Filter</h1>
+            <div class="filter">
+                <label for="brand">Brand:</label>
+                <select id="brand" onchange="updateModels()">
+                    <option value="">Select Brand</option>
+                </select>
+    
+                <label for="model">Model:</label>
+                <select id="model">
+                    <option value="">Select Model</option>
+                </select>
+                
+                <button onclick="searchMobile()">Search</button>
+            </div>
+            <div id="mobileDetails" class="details"></div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+    </html>
+    
+    
