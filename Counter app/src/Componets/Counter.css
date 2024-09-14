@@ -1,0 +1,94 @@
+
+   /* src/Counter.css */
+
+   .counter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background-image: url('https://t4.ftcdn.net/jpg/06/13/01/39/360_F_613013934_PnzmnBqfImteChuCOuTgkZEBg3fz9T2I.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 8px solid #ff007b; /* Changed to a more vibrant border */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow to the container */
+    border-radius: 15px; /* Make the container edges rounded */
+    padding: 20px;
+    backdrop-filter: blur(5px); /* Add blur effect for a more colorful, glassy look */
+}
+
+.counter-value {
+    font-size: 4.5rem;
+    margin: 20px;
+    color: #ffde00; /* Bright yellow color for text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Add shadow to text for depth */
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+}
+
+.button-group {
+    display: flex;
+    gap: 20px; /* Increase the gap between buttons */
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: #fff;
+    background: linear-gradient(45deg, #ff007b, #ff8800); /* Gradient background for buttons */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add shadow to buttons */
+}
+
+.button:hover {
+    background-color: #ff5500; /* Change hover color */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Media Queries */
+
+/* For small screens (tablets and phones) */
+@media (max-width: 768px) {
+    .counter-container {
+        padding: 10px;
+        border-width: 5px; /* Reduce border width for small screens */
+    }
+
+    .counter-value {
+        font-size: 3rem; /* Decrease font size on smaller screens */
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 1.2rem; /* Adjust button size */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 15px;
+    }
+}
+
+/* For extra small screens (phones in portrait mode) */
+@media (max-width: 480px) {
+    .counter-container {
+        height: auto; /* Allow the container height to adjust */
+        padding: 5px;
+    }
+
+    .counter-value {
+        font-size: 2.5rem; /* Further decrease font size */
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 1rem; /* Further adjust button size */
+    }
+
+    .button-group {
+        gap: 10px; /* Adjust the gap between buttons */
+    }
+}
