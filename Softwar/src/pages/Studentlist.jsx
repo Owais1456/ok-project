@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { collection, getDocs } from 'firebase/firestore';
-import { database } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Studentlist = () => {
@@ -65,7 +64,7 @@ const Studentlist = () => {
             alignItems="center"
             justifyContent="space-between"
             sx={{
-              backgroundColor: 'gray',
+              backgroundColor: 'tomato',
               padding: 2,
               mb: 2,
               borderRadius: 2,
@@ -79,14 +78,16 @@ const Studentlist = () => {
               color="white"
               sx={{ mb: isXsScreen ? 2 : 0 }}
             >
-              Students List
+              User List
             </Typography>
             <Button
               onClick={() => navigate('/Student/StudentRegistration')}
               variant="contained"
-              color="success"
+       
               startIcon={<AddIcon />}
               sx={{
+                backgroundColor:"white",
+                color:"black",
                 alignSelf: isXsScreen ? 'center' : 'flex-end',
                 marginLeft: isXsScreen ? 0 : 2,
                 marginTop: isXsScreen ? 2 : 0,
@@ -104,11 +105,12 @@ const Studentlist = () => {
                   <TableCell padding="checkbox">
                     <Checkbox />
                   </TableCell>
-                  <TableCell>ID</TableCell>
+                  <TableCell>User ID</TableCell>
                   <TableCell>First name</TableCell>
                   <TableCell>Last name</TableCell>
                   <TableCell>Email</TableCell>
-                  <TableCell>Class</TableCell>
+                  <TableCell>Role</TableCell>
+                  <TableCell>Cont Num</TableCell>
                   <TableCell>Gender</TableCell>
                 </TableRow>
               </TableHead>
@@ -120,11 +122,12 @@ const Studentlist = () => {
                       <TableCell padding="checkbox">
                         <Checkbox />
                       </TableCell>
-                      <TableCell>{student.id}</TableCell>
+                      <TableCell>{student.userId}</TableCell>
                       <TableCell>{student.firstName}</TableCell>
                       <TableCell>{student.lastName}</TableCell>
                       <TableCell>{student.email}</TableCell>
-                      <TableCell>{student.class}</TableCell>
+                      <TableCell>{student.Role}</TableCell>
+                      <TableCell>{student.Number}</TableCell>
                       <TableCell>{student.gender}</TableCell>
                     </TableRow>
                   ))}

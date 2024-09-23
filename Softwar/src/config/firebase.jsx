@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyAf8anEqP0qVlMAeBP_Fpx8hXxHmlTnbCg",
     authDomain: "reactauth-7e17f.firebaseapp.com",
     projectId: "reactauth-7e17f",
@@ -20,4 +20,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getFirestore(app);
 
-export { auth, database };
+export { auth, database };  

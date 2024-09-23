@@ -3,10 +3,11 @@ import { Box, Grid, TextField, Button, Typography, Checkbox, FormControlLabel, I
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { NavLink, useNavigate } from 'react-router-dom';
-import image from '/online-corporate-learning-courses.webp';
-import jawan from '/jawan pakistan.jpeg'
-import { auth } from '../config/firebase'; // Corrected import
+import image from '../../public/pic1.jpg';
+import jawan from '../../public/logo1 (1).png';
+import { auth } from '../config/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import './LoginPage.css'; // Import your CSS file
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
+  const [isHovered, setIsHovered] = useState(false); // State to manage hover effect
 
   const navigate = useNavigate();
 
@@ -33,7 +35,6 @@ const LoginPage = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Optionally handle the remember me functionality
         if (rememberMe) {
           localStorage.setItem('rememberMe', true);
           localStorage.setItem('email', email);
@@ -43,11 +44,15 @@ const LoginPage = () => {
         }
         alert('Login successful');
         navigate('/');
-        localStorage.setItem("isLoggedIn",true)
+        localStorage.setItem("isLoggedIn", true);
       })
       .catch((error) => {
-        setError(error.message);  // Set error message for display
+        setError(error.message);
       });
+  };
+
+  const handleVisitClick = () => {
+    window.open('https://www.tripadvisor.com/HotelsList-Karachi-Cheap-Hotels-zfp1862550.html', '_blank');
   };
 
   return (
@@ -67,10 +72,40 @@ const LoginPage = () => {
       >
         <img src={jawan} alt="" style={{ width: 100 }} />
         <Typography sx={{ textAlign: "center", fontSize: 25, marginTop: 8, marginRight: 10, marginLeft: 10 }} gutterBottom>
-          WELCOME TO LEARNING MANAGEMENT SYSTEM
+          <span style={{ color: "tomato" }}>WELCOME TO HOTEL MANAGEMENT SYSTEM</span>
         </Typography>
-        <img src={image} alt="LMS" style={{ width: '100%', maxWidth: '100%', height: '100%' }} />
+        
+        {/* Image container for hover effect */}
+        <div 
+          className="image-container"
+          onMouseEnter={() => setIsHovered(true)} // Set hover state
+          onMouseLeave={() => setIsHovered(false)} // Reset hover state
+          style={{ position: 'relative', width: '100%', maxWidth: '90%' }} // Ensure the container is styled
+        >
+          <img src={image} alt="LMS" className="hover-image" style={{ width: "100%" }} />
+          {isHovered && (
+            <button 
+              className="visit-button" 
+              onClick={handleVisitClick} 
+              style={{ 
+                position: 'absolute', 
+                top: '50%', 
+                left: '50%', 
+                transform: 'translate(-50%, -50%)', 
+                backgroundColor: 'tomato', 
+                color: 'white', 
+                border: '2px solid white', 
+                borderRadius: '5px', 
+                padding: '10px 20px', 
+                cursor: 'pointer' 
+              }}
+            >
+              Visit
+            </button>
+          )}
+        </div>
       </Grid>
+
       <Grid 
         item 
         xs={12} 
@@ -84,7 +119,7 @@ const LoginPage = () => {
           padding: 3 
         }}
       >
-        <Box sx={{ width: '100%', maxWidth: '400px' }}>
+        <Box sx={{ width: '100%', maxWidth: '400px', color: "tomato" }}>
           <Typography variant="h5" gutterBottom align="center">
             LOGIN
           </Typography>
@@ -131,8 +166,8 @@ const LoginPage = () => {
           />
 
           <Button 
+            style={{ backgroundColor: 'tomato' }}
             variant="contained" 
-            color="success" 
             fullWidth 
             onClick={handleLogin}
             sx={{ mt: 2 }}
@@ -140,8 +175,8 @@ const LoginPage = () => {
             Login
           </Button>
 
-          <Typography align="center" sx={{ marginTop: 2, fontSize: 20, color: 'green' }}>
-            Or <NavLink to="/signup" style={{ color: 'green' }}>Sign up</NavLink>
+          <Typography align="center" sx={{ marginTop: 2, fontSize: 20, color: 'tomato' }}>
+            Or <NavLink to="/signup" style={{ color: 'tomato' }}>Sign up</NavLink>
           </Typography>
         </Box>
       </Grid>

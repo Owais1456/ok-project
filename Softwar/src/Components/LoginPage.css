@@ -1,0 +1,14 @@
+.hover-image {
+  width: 100%; /* Ensure the image fills the container */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.hover-image:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.image-container {
+  overflow: hidden; /* Prevents overflow on hover */
+  position: relative; /* Required for absolutely positioned button */
+}

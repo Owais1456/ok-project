@@ -1,119 +1,75 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Button,
-  Box,
-  Typography,
-  TablePagination,
-  useMediaQuery,
-} from '@mui/material';
+import { Box, Button, Typography, Grid, CircularProgress } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { collection, getDocs } from 'firebase/firestore';
-import { database } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
+import RoomCard from '../RoomCard';
 
 const SubjectList = () => {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery('(max-width:600px)');
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [subjects, setSubjects] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
-    const fetchSubjects = async () => {
+    const fetchProducts = async () => {
       try {
-        const subjectCollection = collection(database, 'Subject');
-        const subjectSnapshot = await getDocs(subjectCollection);
-        const subjectList = subjectSnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setSubjects(subjectList);
+        const response = await fetch('https://api.escuelajs.co/api/v1/products');
+        const productList = await response.json();
+        setProducts(productList);
       } catch (error) {
-        console.error('Error fetching subjects: ', error);
+        console.error('Error fetching products: ', error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
 
-    fetchSubjects();
+    fetchProducts();
   }, []);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+  const handleCardClick = () => {
+    navigate('/user-registration'); // Adjust the path for user registration
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+  const handleAddClick = () => {
+    navigate('/booking-form'); // Navigate to booking form
   };
 
   return (
-    <Box>
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        sx={{
-          backgroundColor: 'gray',
-          padding: 2,
-          mb: 2,
-          position: 'relative'
-        }}
-      >
-        <Typography variant={isMobile ? 'h5' : 'h4'} component="h1" align="center" color="white">
-          Subject List
+    <Box className="p-4">
+      <Box className="flex flex-col items-center bg-gray-700 p-4 mb-4 rounded-lg">
+        <Typography variant="h4" component="h1" className="text-white" style={{ textAlign: "center" }}>
+          Room List
         </Typography>
+        {/* Uncomment if needed
         <Button
-          onClick={() => navigate('/Subject/SubjectAdd')}
+          onClick={handleAddClick}
           variant="contained"
           color="success"
           startIcon={<AddIcon />}
-          sx={{
-            position: 'absolute',
-            right: 16,
-            top: '50%',
-            transform: 'translateY(-50%)'
-          }}
+          className="mt-2"
         >
           Add
         </Button>
+        */}
       </Box>
-      <TableContainer component={Paper}>
-        <Table aria-label="subject table">
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Subject Name</TableCell>
-              <TableCell>Class</TableCell>
-              <TableCell>Group</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {subjects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((subject) => (
-              <TableRow key={subject.id}>
-                <TableCell>{subject.id}</TableCell>
-                <TableCell>{subject.SubjectName}</TableCell>
-                <TableCell>{subject.class}</TableCell>
-                <TableCell>{subject.SelectGroup}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={subjects.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+
+      {loading ? ( // Show loading indicator while fetching
+        <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Grid container spacing={4}>
+          {products.map((product) => (
+            <Grid item xs={12} sm={6} md={4} key={product.id}>
+              <RoomCard
+                imageUrl={product.images[0]}
+                title={product.title}
+                price={product.price}
+                onClick={handleCardClick}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Box>
   );
 };

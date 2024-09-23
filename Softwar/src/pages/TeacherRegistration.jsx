@@ -22,6 +22,8 @@ const TeacherRegistration = () => {
     email: "",
     class: "",
     gender: "",
+    phone: "",  // New field for phone number
+    address: ""  // New field for address
   });
 
   const handleChange = (e) => {
@@ -33,7 +35,7 @@ const TeacherRegistration = () => {
     e.preventDefault();
     try {
       await addDoc(collection(database, "Teacher"), data);
-      navigate('/Teacher/TeacherList'); // Navigate to StudentList after saving the data
+      navigate('/Teacher/TeacherList'); // Navigate to TeacherList after saving the data
     } catch (error) {
       console.log(error);
     }
@@ -54,9 +56,21 @@ const TeacherRegistration = () => {
       }}
     >
       <Typography variant="h5" gutterBottom>
-        REGISTRATION FORM
-      </Typography>
+        CUSTOMER REGISTRATION FORM
+        </Typography>
+        
       <TextField
+      label="Customer ID"
+      name='userId'
+      type="text"
+      variant="outlined"
+      margin="normal"
+      fullWidth
+      required
+      value={data.userId}
+      onChange={handleChange}
+    /> 
+ <TextField
         label="First Name"
         name="firstName"
         variant="outlined"
@@ -87,7 +101,7 @@ const TeacherRegistration = () => {
         value={data.email}
         onChange={handleChange}
       />
-      <TextField
+      {/* <TextField
         label="Class"
         name="class"
         variant="outlined"
@@ -96,10 +110,30 @@ const TeacherRegistration = () => {
         type="number"
         required
         value={data.class}
+        onChange={handleChange} */}
+      
+      <TextField
+        label="Phone Number"
+        name="phone"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+        required
+        value={data.phone}
         onChange={handleChange}
       />
-      <FormControl component="fieldset" margin="normal" required>
-        <FormLabel component="legend">Gender</FormLabel>
+      <TextField
+        label="Address"
+        name="address"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+        required
+        value={data.address}
+        onChange={handleChange}
+      />
+      <FormControl  component="fieldset" margin="normal" required>
+        <FormLabel component="legend" style={{color:"tomato"}}>Gender</FormLabel>
         <RadioGroup
           name="gender"
           value={data.gender}
@@ -108,17 +142,17 @@ const TeacherRegistration = () => {
         >
           <FormControlLabel
             value="female"
-            control={<Radio color="success" />}
+            control={<Radio style={{color:"tomato"}} />}
             label="Female"
           />
           <FormControlLabel
             value="male"
-            control={<Radio color="success" />}
+            control={<Radio  style={{color:"tomato"}} />}
             label="Male"
           />
         </RadioGroup>
       </FormControl>
-      <Button
+      <Button style={{backgroundColor:'tomato'}}
         type="submit"
         variant="contained"
         color="success"

@@ -17,6 +17,8 @@ import {
 import { Inbox, Menu, ExpandLess, ExpandMore } from '@mui/icons-material';
 import SchoolIcon from '@mui/icons-material/School';
 import { Outlet, useNavigate } from 'react-router-dom';
+import jawan from '../../public/logo1 (1).png'
+
 
 const drawerWidth = 240;
 
@@ -39,11 +41,11 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
-const handleLogout = () => {
-  localStorage.clear()
-  navigate('/login')
-}
-  
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate('/login')
+  }
+
   const drawer = (
     <div>
       <Toolbar />
@@ -51,171 +53,185 @@ const handleLogout = () => {
         <List>
           {/* Students */}
           <ListItem button onClick={() => setOpenStudents(!openStudents)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Students" sx={{ color: '#008000' }} />
+            <img style={{ width: 40, marginRight: 20 }} src={jawan} alt="" />
+            {/* <ListItemIcon style={{color:'tomato'}}> */}
+            {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+
+            <ListItemText primary="User" sx={{ color: 'tomato' }} />
             {openStudents ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openStudents} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/student/StudentRegistration')}>
-                <ListItemText primary="Student Registration" sx={{ color: '#008000' }} />
+                <ListItemText primary="User Registration" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/student/StudentList')}>
-                <ListItemText primary="Student List" sx={{ color: '#008000' }} />
+                <ListItemText primary="User List" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Teachers */}
           <ListItem button onClick={() => setOpenTeachers(!openTeachers)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Teachers" sx={{ color: '#008000' }} />
+            <img style={{ width: 40, marginRight: 20 }} src={jawan} alt="" />
+            {/* <ListItemIcon style={{color:"tomato"}}> */}
+            {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Customer" sx={{ color: 'tomato' }} />
             {openTeachers ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openTeachers} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Teacher/TeacherRegistration')}>
-                <ListItemText primary="Teacher Registration" sx={{ color: '#008000' }} />
+                <ListItemText primary="Customer Registration" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Teacher/TeacherList')}>
-                <ListItemText primary="Teacher List" sx={{ color: '#008000' }} />
+                <ListItemText primary="Customer List" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Subjects */}
           <ListItem button onClick={() => setOpenSubjects(!openSubjects)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Subjects" sx={{ color: '#008000' }} />
+            <img style={{ width: 40, marginRight: 20 }} src={jawan} alt="" />
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Room" sx={{ color: 'tomato' }} />
             {openSubjects ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openSubjects} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Subject/SubjectAdd')}>
-                <ListItemText primary="Subjects Add" sx={{ color: '#008000' }} />
-              </ListItem>
+              {/* <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Subject/SubjectAdd')}>
+                <ListItemText primary="Room Add" sx={{ color: 'tomato' }} />
+              </ListItem> */}
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Subject/SubjectList')}>
-                <ListItemText primary="Subjects List" sx={{ color: '#008000' }} />
+                <ListItemText primary="Room List" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* School */}
           <ListItem button onClick={() => setOpenSchool(!openSchool)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="School" sx={{ color: '#008000' }} />
+          <img style={{width:40, marginRight:20}} src={jawan} alt="" />
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Booking" sx={{ color: 'tomato' }} />
             {openSchool ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openSchool} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Schoole/StudentRegistration')}>
-                <ListItemText primary="Students Registration" sx={{ color: '#008000' }} />
+                <ListItemText primary="Booking Registration" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Schoole/TeacherRegistration')}>
-                <ListItemText primary="Teachers Registration" sx={{ color: '#008000' }} />
+                <ListItemText primary="Client Registration" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Syllabus */}
           <ListItem button onClick={() => setOpenSyllabus(!openSyllabus)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Syllabus" sx={{ color: '#008000' }} />
+            <img style={{width:40,marginRight:20}} src={jawan} alt="" />
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Payment" sx={{ color: 'tomato' }} />
             {openSyllabus ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openSyllabus} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Syllabus/SyllabusForm')}>
-                <ListItemText primary="Syllabus Form" sx={{ color: '#008000' }} />
+                <ListItemText primary="Payment Form" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Syllabus/SyllabusList')}>
-                <ListItemText primary="Syllabus List" sx={{ color: '#008000' }} />
+                <ListItemText primary="Payment List" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Class */}
           <ListItem button onClick={() => setOpenClass(!openClass)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Class" sx={{ color: '#008000' }} />
+          <img style={{width:40,marginRight:20}} src={jawan} alt="" />
+
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Staff" sx={{ color: 'tomato' }} />
             {openClass ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openClass} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Class/ClassForm')}>
-                <ListItemText primary="Class Form" sx={{ color: '#008000' }} />
+                <ListItemText primary="Staff Form" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Class/ClassList')}>
-                <ListItemText primary="Class List" sx={{ color: '#008000' }} />
+                <ListItemText primary="Staff List" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Fees */}
           <ListItem button onClick={() => setOpenFees(!openFees)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Fees" sx={{ color: '#008000' }} />
+          <img style={{width:40,marginRight:20}} src={jawan} alt="" />
+          
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Service" sx={{ color: 'tomato' }} />
             {openFees ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openFees} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Fee/FeeStructure')}>
-                <ListItemText primary="Fee Structure" sx={{ color: '#008000' }} />
+                <ListItemText primary="Service Structure" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Fee/FeeVoucher')}>
-                <ListItemText primary="Fee Voucher" sx={{ color: '#008000' }} />
+                <ListItemText primary="Service Voucher" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Fee/FeeSubmission')}>
-                <ListItemText primary="Fee Submission" sx={{ color: '#008000' }} />
+                <ListItemText primary="Service Submission" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Admission */}
           <ListItem button onClick={() => setOpenAdmission(!openAdmission)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Admission" sx={{ color: '#008000' }} />
+          <img style={{width:40,marginRight:20}} src={jawan} alt="" />
+
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="ServiceRequest" sx={{ color: 'tomato' }} />
             {openAdmission ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openAdmission} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Addmission/AddmissionForm')}>
-                <ListItemText primary="Admission Form" sx={{ color: '#008000' }} />
+                <ListItemText primary="ServiceRequest Form" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
 
           {/* Exam */}
           <ListItem button onClick={() => setOpenExam(!openExam)}>
-            <ListItemIcon>
-              <Inbox />
-            </ListItemIcon>
-            <ListItemText primary="Exam" sx={{ color: '#008000' }} />
+          <img style={{width:40,marginRight:20}} src={jawan} alt="" />
+
+            {/* <ListItemIcon> */}
+              {/* <Inbox /> */}
+            {/* </ListItemIcon> */}
+            <ListItemText primary="Inventory" sx={{ color: 'tomato' }} />
             {openExam ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openExam} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Exam/ExamSchedule')}>
-                <ListItemText primary="Exam Schedule" sx={{ color: '#008000' }} />
+                <ListItemText primary="Inventory Schedule" sx={{ color: 'tomato' }} />
               </ListItem>
               <ListItem button sx={{ pl: 4 }} onClick={() => navigate('/Exam/ExamResult')}>
-                <ListItemText primary="Exam Result" sx={{ color: '#008000' }} />
+                <ListItemText primary="Inventory Result" sx={{ color: 'tomato' }} />
               </ListItem>
             </List>
           </Collapse>
@@ -225,9 +241,9 @@ const handleLogout = () => {
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', color: "tomato" }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'tomato', zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -239,10 +255,10 @@ const handleLogout = () => {
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-            <SchoolIcon sx={{ mr: 2 }} /> <Box sx={{ fontFamily: 'cursive', fontSize: 18 }}>Learning Management System</Box>
+            <img style={{ width: 50 }} src={jawan} alt="" />  <Box sx={{ fontFamily: 'cursive', fontSize: 18 }}>Hotel Management System</Box>
           </Typography>
           <IconButton color="inherit" edge="end" sx={{ ml: 'auto' }}>
-            <Button variant="contained" onClick={handleLogout}>
+            <Button style={{ color: 'white', border: 'none' }} onClick={handleLogout}>
               Logout
             </Button>
           </IconButton>
@@ -271,7 +287,7 @@ const handleLogout = () => {
         <Toolbar />
         {/* Main Content Goes Here */}
         <Outlet />
-        
+
       </Box>
 
       <Drawer
@@ -284,9 +300,9 @@ const handleLogout = () => {
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
         }}
       >
-        
+
         {drawer}
-        
+
       </Drawer>
     </Box>
   );

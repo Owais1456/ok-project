@@ -1,0 +1,76 @@
+.room-card {
+    background-color: white; /* Card background color */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Default shadow */
+    padding: 1rem; /* Padding inside the card */
+    margin: 1rem; /* Margin around the card */
+    border: 1px solid #e5e5e5; /* Border color */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transition for shadow and transform */
+    position: relative; /* Ensure positioning context for the outline */
+  }
+  
+  .room-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+    z-index: 1; /* Bring the hovered card above others */
+  }
+  
+  .room-card-image {
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Cover image */
+    border-radius: 0.5rem; /* Match the card's border radius */
+    transition: transform 0.3s ease; /* Transition for image scaling */
+  }
+  
+  .room-card:hover .room-card-image {
+    transform: scale(1.05); /* Slightly enlarge the image on hover */
+  }
+  
+  .room-card-title {
+    font-size: 1.25rem; /* Title font size */
+    font-weight: 600; /* Bold title */
+    margin-top: 0.5rem; /* Space above the title */
+  }
+  
+  .room-card-price {
+    font-size: 1rem; /* Price font size */
+    color: #4A5568; /* Text color */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .room-card {
+      margin: 0.5rem; /* Reduced margin on smaller screens */
+    }
+  
+    .room-card-image {
+      height: 150px; /* Adjusted height for smaller screens */
+    }
+  
+    .room-card-title {
+      font-size: 1.1rem; /* Slightly smaller title */
+    }
+  
+    .room-card-price {
+      font-size: 0.9rem; /* Slightly smaller price */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .room-card {
+      margin: 0.25rem; /* Further reduced margin on very small screens */
+    }
+  
+    .room-card-image {
+      height: 120px; /* Adjusted height for very small screens */
+    }
+  
+    .room-card-title {
+      font-size: 1rem; /* Smaller title for very small screens */
+    }
+  
+    .room-card-price {
+      font-size: 0.8rem; /* Smaller price for very small screens */
+    }
+  }
+  

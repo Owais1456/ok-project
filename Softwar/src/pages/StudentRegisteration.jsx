@@ -10,9 +10,9 @@ import {
   FormControl,
   FormLabel,
 } from '@mui/material';
-import { addDoc, collection } from 'firebase/firestore';
-import { database } from '../config/firebase';
+import { addDoc, collection, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+// import { database } from '../Config/firebase';
 
 const StudentRegistration = () => {
   const navigate = useNavigate();
@@ -20,8 +20,11 @@ const StudentRegistration = () => {
     firstName: "",
     lastName: "",
     email: "",
-    class: "",
     gender: "",
+    userId:"",
+    Number:"",
+    Role:"",
+
   });
 
   const handleChange = (e) => {
@@ -31,12 +34,13 @@ const StudentRegistration = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await addDoc(collection(database, "students"), data);
-      navigate('/student/StudentList'); // Navigate to StudentList after saving the data
-    } catch (error) {
-      console.log(error);
-    }
+    console.log(data)
+    // try {
+    //   await setDoc(collection(database, data.userId), data);
+    //   navigate('/student/StudentList'); // Navigate to StudentList after saving the data
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -54,8 +58,19 @@ const StudentRegistration = () => {
       }}
     >
       <Typography variant="h5" gutterBottom>
-        REGISTRATION FORM
-      </Typography>
+       USER REGISTRATION FORM              
+             </Typography>
+      <TextField
+      label="Customer ID"
+      name='userId'
+      type="text"
+      variant="outlined"
+      margin="normal"
+      fullWidth
+      required
+      value={data.userId}
+      onChange={handleChange}
+    /> 
       <TextField
         label="First Name"
         name="firstName"
@@ -86,20 +101,32 @@ const StudentRegistration = () => {
         required
         value={data.email}
         onChange={handleChange}
-      />
-      <TextField
-        label="Class"
-        name="class"
-        variant="outlined"
-        margin="normal"
-        fullWidth
-        type="number"
-        required
-        value={data.class}
-        onChange={handleChange}
-      />
+      />     
+  
+     <TextField
+  label="Role"
+  name='Role'
+  type="text"
+  variant="outlined"
+  margin="normal"
+  fullWidth
+  required
+  value={data.Role}
+  onChange={handleChange}
+/>
+<TextField 
+  label="ContactNumber"
+  name='Number'
+  type="text"
+  variant="outlined"
+  margin="normal"
+  fullWidth
+  required
+  value={data.Number}
+  onChange={handleChange}
+/>
       <FormControl component="fieldset" margin="normal" required>
-        <FormLabel component="legend">Gender</FormLabel>
+        <FormLabel component="legend" style={{color:'tomato'}}>Gender</FormLabel>
         <RadioGroup
           name="gender"
           value={data.gender}
@@ -108,12 +135,12 @@ const StudentRegistration = () => {
         >
           <FormControlLabel
             value="female"
-            control={<Radio color="success" />}
+            control={<Radio style={{color:"tomato"}}  />}
             label="Female"
           />
           <FormControlLabel
             value="male"
-            control={<Radio color="success" />}
+            control={<Radio style={{color:"tomato"}} />}
             label="Male"
           />
         </RadioGroup>
@@ -123,7 +150,7 @@ const StudentRegistration = () => {
         variant="contained"
         color="success"
         fullWidth
-        sx={{ mt: 2 }}
+        sx={{ mt: 2,backgroundColor:"tomato" }}
       >
         Submit
       </Button>
